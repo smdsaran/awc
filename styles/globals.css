@@ -14,3 +14,11 @@ a {
 * {
   box-sizing: border-box;
 }
+
+input {
+  border-color: #143365;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

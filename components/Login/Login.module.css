@@ -1,0 +1,127 @@
+.main {
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  font-family: roboto, "Noto Sans Myanmar UI", arial, sans-serif;
+}
+
+.auth {
+  width: 30%;
+  height: 70%;
+  padding: 2.5rem;
+  border: 1px solid #dadce0;
+  border-radius: 8px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0 auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.auth h1 {
+  font-family: inherit;
+  font-weight: 400;
+  color: #202124;
+  font-size: 1.6 rem;
+  text-align: center;
+}
+
+.auth .control {
+  margin-bottom: 1.5rem;
+}
+
+.checkbox {
+  /* zoom: 1.5; */
+  width: 20px;
+  height: 20px;
+  margin-left: 0;
+}
+
+.checkbox_container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox_label {
+  font-size: 1rem;
+  margin-left: 5px;
+}
+
+.auth .control label {
+  display: block;
+  color: #202124;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.auth .control input {
+  font: inherit;
+  background-color: #f1e1fc;
+  color: black;
+  border-radius: 4px;
+  border: 1px solid #dadce0;
+  width: 100%;
+  height: 5vh;
+  text-align: left;
+  padding: 0.25rem;
+}
+
+.auth .control input:focus {
+  outline: none !important;
+  border: 1.5px solid #1a73e8;
+}
+
+.auth .actions {
+  margin-top: 2.5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.auth .actions button {
+  cursor: pointer;
+  font: inherit;
+  color: white;
+  background-color: #1480c4;
+  border: 1px solid #1480c4;
+  border-radius: 4px;
+  padding: 0.5rem 2.5rem;
+}
+
+.auth .actions button:hover {
+  background-color: #1a6493;
+  border-color: #1a6493;
+}
+
+.auth .actions .toggle {
+  margin-top: 1rem;
+  background-color: transparent;
+  color: #3aaaf1;
+  border: none;
+  padding: 0.15rem 1.5rem;
+}
+
+.auth .actions .toggle:hover {
+  background-color: #dcedf8;
+  color: #3aaaf1;
+}
+
+@media (max-width: 799px) {
+  .auth {
+    width: 90%;
+  }
+}
+/*# sourceMappingURL=Login.module.css.map */
