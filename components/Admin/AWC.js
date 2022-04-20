@@ -18,15 +18,18 @@ const AWC = () => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post("https://awc-easy.herokuapp.com/add-awc", {
-        centerCode: cRef.current.value,
+      const response = await axios.post(
+        "https://awc-easy.herokuapp.com/add-awc",
+        {
+          centerCode: cRef.current.value,
 
-        divisionCode: dcodeRef.current.value,
-        pincode: pincodeRef.current.value,
-        cityOrVillage: areaRef.current.value,
-        district: districtRef.current.value,
-        state: stateRef.current.value,
-      });
+          divisionCode: dcodeRef.current.value,
+          pincode: pincodeRef.current.value,
+          cityOrVillage: areaRef.current.value,
+          district: districtRef.current.value,
+          state: stateRef.current.value,
+        }
+      );
 
       console.log(response);
 
@@ -48,13 +51,13 @@ const AWC = () => {
         <input
           type="text"
           placeholder="Center Code"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={cRef}
         />
         <input
           type="text"
           placeholder="Division Code"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={dcodeRef}
         />
         <input
@@ -62,30 +65,30 @@ const AWC = () => {
           placeholder="Pincode"
           maxLength="6"
           minLength="6"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={pincodeRef}
         />
         <input
           type="text"
           placeholder="Area"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={areaRef}
         />
         <input
           type="text"
           placeholder="District"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={districtRef}
         />
         <input
           type="text"
           placeholder="State"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={stateRef}
         />
         <button
           type="submit"
-          className="w-10/12 h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+          className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
         >
           {isLoading ? "..." : "Submit"}
         </button>

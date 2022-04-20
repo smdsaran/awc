@@ -54,45 +54,45 @@ const Supervisor = () => {
           <input
             type="text"
             placeholder="Supervisor Name"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={nameRef}
           />
           <input
             type="text"
             placeholder="User ID"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={useridRef}
           />
           <input
             type="tel"
             placeholder="Mobile Number"
             pattern="[0-9]{10}"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={mobnumRef}
           />
           <input
             type="text"
             placeholder="Email"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={emailRef}
           />
           <input
             type="text"
             placeholder="Divison Code"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={dcodeRef}
           />
 
           <input
             type="text"
             placeholder="New Password"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={passwordRef}
           />
 
           <button
             type="submit"
-            className="w-10/12 h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+            className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
           >
             {isLoading ? "..." : "Submit"}
           </button>
