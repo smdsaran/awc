@@ -37,6 +37,10 @@ export default function AppBarMuiForSupervisor() {
     router.push("/supervisor-dashboard/complaint-requests");
   };
 
+  const p3ClickHandler = () => {
+    router.push("/supervisor-dashboard/announcements-to-awws");
+  };
+
   return (
     <div styles={{ margin: 0 }}>
       <AppBar position="sticky">
@@ -80,6 +84,13 @@ export default function AppBarMuiForSupervisor() {
             onClick={p2ClickHandler}
           >
             Complaint/Requests
+          </p>
+
+          <p
+            className="py-2 w-full hover:cursor-pointer"
+            onClick={p3ClickHandler}
+          >
+            Announcements to AWWs
           </p>
         </div>
       )}
