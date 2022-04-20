@@ -15,14 +15,16 @@ const AWCListContainer = (props) => {
       className="w-10/12 md:w-6/12 h-auto shadow-lg my-4 block ml-auto mr-auto hover:cursor-pointer"
       onClick={awcOpenHandler}
     >
-      <p className="py-2 w-full hover:cursor-pointer">
-        <strong>Code:</strong>
-        {` ${props.data.centerCode}`}
-      </p>
-      <p className="py-2 w-full hover:cursor-pointer">
-        <strong>Place:</strong>
-        {` ${props.data.cityOrVillage}`}
-      </p>
+      <div className="flex justify-evenly">
+        <p className="p-2 w-2/4 hover:cursor-pointer text-center text-blue-700">
+          <strong className="text-indigo-900">Code:</strong>
+          {` ${props.data.centerCode}`}
+        </p>
+        <p className="p-2 w-2/4 hover:cursor-pointer text-center text-blue-700">
+          <strong className="text-indigo-900">Place:</strong>
+          {` ${props.data.cityOrVillage}`}
+        </p>
+      </div>
     </div>
   );
 };

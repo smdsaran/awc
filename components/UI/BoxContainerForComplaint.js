@@ -5,8 +5,8 @@ const BoxContainer = (props) => {
 
   return (
     <div className="w-10/12 md:w-6/12 h-auto shadow-lg my-4 block ml-auto mr-auto text-center p-4">
-      <p className="py-2 w-full">
-        <strong>Center Code:</strong>
+      <p className="py-2 w-full text-blue-700">
+        <strong className="text-indigo-900">Center Code:</strong>
         {` ${props.data.centerCode}`}
       </p>
 

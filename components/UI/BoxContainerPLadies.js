@@ -45,13 +45,13 @@ const BoxContainerPLadies = (props) => {
   return (
     <div className="w-10/12 md:w-6/12 h-auto shadow-lg my-4 block ml-auto mr-auto text-center">
       <div onClick={onClickHandler}>
-        <p className="py-2 w-full hover:cursor-pointer">
-          <strong>Name:</strong>
+        <p className="py-2 w-full hover:cursor-pointer text-blue-700">
+          <strong className="text-indigo-900">Name:</strong>
           {` ${props.data.name}`}
         </p>
 
-        <p className="py-2 w-full hover:cursor-pointer">
-          <strong>Husband Name:</strong>
+        <p className="py-2 w-full hover:cursor-pointer text-blue-700">
+          <strong className="text-indigo-900">Husband Name:</strong>
           {` ${props.data.husbandName}`}
         </p>
 

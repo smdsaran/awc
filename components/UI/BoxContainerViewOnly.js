@@ -12,13 +12,13 @@ const BoxContainer = (props) => {
   return (
     <div className="w-10/12 md:w-6/12 h-auto shadow-lg my-4 block ml-auto mr-auto text-center">
       <div onClick={onClickHandler}>
-        <p className="py-2 w-full hover:cursor-pointer">
-          <strong>Name:</strong>
+        <p className="py-2 w-full hover:cursor-pointer text-blue-700">
+          <strong className="text-indigo-900">Name:</strong>
           {` ${props.data.name}`}
         </p>
         {props.isChild === "child" && (
-          <p className="py-2 w-full hover:cursor-pointer">
-            <strong>Father's Name:</strong>
+          <p className="py-2 w-full hover:cursor-pointer text-blue-700">
+            <strong className="text-indigo-900">Father's Name:</strong>
             {` ${props.data.fatherName}`}
           </p>
         )}
