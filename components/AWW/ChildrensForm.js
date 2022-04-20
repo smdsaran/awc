@@ -130,25 +130,25 @@ const ChildrensForm = (props) => {
         <input
           type="text"
           placeholder="Center Code"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={centerCodeRef}
         />
         <input
           type="text"
           placeholder={`${props.isChild} Name`}
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={nameRef}
         />
         <input
           type="number"
           placeholder="Age"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={ageRef}
         />
         <input
           type="text"
           placeholder="Date"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={dobRef}
           onFocus={(e) => (e.target.type = "date")}
           onBlur={(e) => (e.target.type = "text")}
@@ -157,7 +157,7 @@ const ChildrensForm = (props) => {
           <input
             type="text"
             placeholder="Father's Name"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={fatherNameRef}
           />
         )}
@@ -166,7 +166,7 @@ const ChildrensForm = (props) => {
           <input
             type="text"
             placeholder="Mother's Name"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={motherNameRef}
           />
         )}
@@ -175,13 +175,13 @@ const ChildrensForm = (props) => {
           <input
             type="text"
             placeholder="Husband Name"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={husbandNameRef}
           />
         )}
 
         {props.isChildShort === "plady" && (
-          <SelectDiv className="w-10/12">
+          <SelectDiv className="w-full h-8">
             {/* <Label htmlFor="category">Category</Label> */}
             <Select
               name="babydelivered?"
@@ -201,7 +201,7 @@ const ChildrensForm = (props) => {
               <input
                 type="text"
                 placeholder="Delivered Date"
-                className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+                className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
                 onChange={deliveryDateHandler}
                 onFocus={(e) => (e.target.type = "date")}
                 onBlur={(e) => (e.target.type = "text")}
@@ -212,7 +212,7 @@ const ChildrensForm = (props) => {
               <input
                 type="number"
                 placeholder="Pregnancy Month"
-                className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+                className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
                 onChange={pregnancyMonthHandler}
               />
             )}
@@ -223,34 +223,34 @@ const ChildrensForm = (props) => {
           type="number"
           placeholder="Mobile No"
           pattern="[0-9]{10}"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={mobRef}
         />
 
         <input
           type="text"
           placeholder="Address"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={addressRef}
         />
 
         <input
           type="text"
           placeholder="Height in cm"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={heightRef}
         />
 
         <input
           type="text"
           placeholder="Weight in Kg"
-          className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={weightRef}
         />
 
         <button
           type="submit"
-          className="w-10/12 h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+          className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
         >
           {isLoading ? "..." : "Submit"}
         </button>

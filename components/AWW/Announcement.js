@@ -47,13 +47,13 @@ const Announcement = (props) => {
           <textarea
             type="text"
             placeholder="Body"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={body}
           />
 
           <button
             type="submit"
-            className="w-10/12 h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+            className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
           >
             {isLoading ? "..." : "Submit"}
           </button>

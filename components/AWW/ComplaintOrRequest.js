@@ -72,24 +72,24 @@ const ComplaintOrRequest = (props) => {
           <input
             type="text"
             placeholder="Division Code"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={divisionCode}
           />
 
           <input
             type="text"
             placeholder="Subject"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={subject}
           />
           <textarea
             type="text"
             placeholder="Body"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={body}
           />
 
-          <Label className="w-10/12">
+          <Label className="w-full">
             <Input
               itsImage
               type="file"
@@ -100,7 +100,7 @@ const ComplaintOrRequest = (props) => {
           </Label>
 
           {img && (
-            <AddedImagesDiv className="w-10/12">
+            <AddedImagesDiv className="w-full">
               <H4>Added Image</H4>
               {img.name}
             </AddedImagesDiv>
@@ -108,7 +108,7 @@ const ComplaintOrRequest = (props) => {
 
           <button
             type="submit"
-            className="w-10/12 h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+            className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
           >
             {isLoading ? "..." : "Submit"}
           </button>

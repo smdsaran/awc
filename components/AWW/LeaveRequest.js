@@ -50,14 +50,14 @@ const LeaveRequest = (props) => {
           <input
             type="text"
             placeholder="Division Code"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={divisionCode}
           />
 
           <input
             type="text"
             placeholder="Worker Name"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={workerName}
           />
 
@@ -65,13 +65,13 @@ const LeaveRequest = (props) => {
             type="tel"
             placeholder="Worker Mobile No"
             pattern="[0-9]{10}"
-            className="w-10/12 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={workerNumber}
           />
 
           <button
             type="submit"
-            className="w-10/12 h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+            className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
           >
             {isLoading ? "..." : "Submit"}
           </button>
