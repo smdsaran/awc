@@ -58,7 +58,7 @@ const Studies = () => {
       </div>
       <StudiesForm submited={formSubmitted} />
 
-      <div className="w-full h-auto flex flex-wrap flex-col justify-center md:flex-row md:justify-start">
+      <div className="w-full h-auto mb-96 flex flex-wrap flex-col justify-center md:flex-row md:justify-start">
         {listing}
       </div>
     </div>

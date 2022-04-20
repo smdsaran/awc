@@ -64,7 +64,7 @@ const ComplaintOrRequests = () => {
         Complaints/Requests
       </div>
 
-      {listing}
+      <div className="mb-96">{listing}</div>
     </div>
   );
 };

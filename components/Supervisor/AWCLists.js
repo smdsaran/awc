@@ -39,7 +39,7 @@ const AWCLists = () => {
         AWC Lists
       </div>
 
-      {lists}
+      <div className="mb-96">{lists}</div>
     </div>
   );
 };

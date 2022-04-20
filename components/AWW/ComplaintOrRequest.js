@@ -59,7 +59,7 @@ const ComplaintOrRequest = (props) => {
         Complaint/Requests
       </div>
 
-      <div className="w-full h-auto mt-10 flex justify-center items-center content-center my-4">
+      <div className="w-full h-auto mb-96 mt-10 flex justify-center items-center content-center my-4">
         <form
           className="w-10/12 h-auto md:w-6/12"
           onSubmit={formSubmitHandler}

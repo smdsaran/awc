@@ -52,7 +52,7 @@ const Studies = () => {
         Studies Collection
       </div>
 
-      <div className="w-full h-auto flex flex-wrap flex-col justify-center md:flex-row md:justify-start">
+      <div className="w-full h-auto mb-96 mt-8 flex flex-wrap flex-col justify-center md:flex-row md:justify-start">
         {listing}
       </div>
     </div>
