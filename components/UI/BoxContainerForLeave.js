@@ -61,6 +61,11 @@ const BoxContainer = (props) => {
       </p>
 
       <p className="p-2 w-full hover:cursor-pointer">
+        <strong>Reason:</strong>
+        {` ${props.data.reason}`}
+      </p>
+
+      <p className="p-2 w-full hover:cursor-pointer">
         <strong>Center Code:</strong>
         {` ${props.data.centerCode}`}
       </p>

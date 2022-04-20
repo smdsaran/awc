@@ -5,6 +5,7 @@ const LeaveRequest = (props) => {
   const divisionCode = useRef();
   const workerName = useRef();
   const workerNumber = useRef();
+  const reason = useRef();
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
@@ -22,6 +23,7 @@ const LeaveRequest = (props) => {
           divisionCode: divisionCode.current.value,
           workerName: workerName.current.value,
           workerNumber: workerNumber.current.value,
+          reason: reason.current.value,
         }
       );
 
@@ -67,6 +69,13 @@ const LeaveRequest = (props) => {
             pattern="[0-9]{10}"
             className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={workerNumber}
+          />
+
+          <textarea
+            type="text"
+            placeholder="Reason for Leave"
+            className="w-full border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            ref={reason}
           />
 
           <button
