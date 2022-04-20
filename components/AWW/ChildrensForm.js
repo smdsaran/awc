@@ -70,7 +70,7 @@ const ChildrensForm = (props) => {
 
       if (props.isChildShort === "child") {
         const response = await axios.post(
-          `http://localhost:3001/add-${props.isChildShort}`,
+          `https://awc-easy.herokuapp.com/add-${props.isChildShort}`,
           {
             centerCode: centerCodeRef.current.value,
 
@@ -91,7 +91,7 @@ const ChildrensForm = (props) => {
         if (response.statusText === "OK") setStatus(response.data);
       } else {
         const response = await axios.post(
-          `http://localhost:3001/add-${props.isChildShort}`,
+          `https://awc-easy.herokuapp.com/add-${props.isChildShort}`,
           {
             centerCode: centerCodeRef.current.value,
 

@@ -15,7 +15,7 @@ const Studies = (props) => {
       setIsLoading(true);
 
       const response = await axios.post(
-        `http://localhost:3001/addStudyMaterials`,
+        `https://awc-easy.herokuapp.com/addStudyMaterials`,
         {
           centerCode: localStorage.getItem("code"),
           title: title.current.value,

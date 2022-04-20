@@ -38,7 +38,7 @@ const ComplaintOrRequest = (props) => {
       setIsLoading(true);
 
       const response = await axios.post(
-        `http://localhost:3001/add-complaint`,
+        `https://awc-easy.herokuapp.com/add-complaint`,
         fd
       );
 

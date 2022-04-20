@@ -12,7 +12,7 @@ const PregnantLadies = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/view-pladies/${awc}`
+        `https://awc-easy.herokuapp.com/view-pladies/${awc}`
       );
 
       console.log(response);

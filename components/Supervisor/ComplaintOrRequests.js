@@ -11,7 +11,7 @@ const ComplaintOrRequests = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/view-complaint/${dcode}`
+        `https://awc-easy.herokuapp.com/view-complaint/${dcode}`
       );
 
       console.log(response);
@@ -48,7 +48,7 @@ const ComplaintOrRequests = () => {
 
   if (datas !== undefined) {
     listing = datas.map((data) => {
-      fetchImages(`http://localhost:3001/uploads/${data.image}`);
+      fetchImages(`https://awc-easy.herokuapp.com/uploads/${data.image}`);
 
       // fetchImagesWithAxios(`http://localhost:3001/fetch-image/${data.image}`);
 

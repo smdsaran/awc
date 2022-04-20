@@ -20,16 +20,19 @@ const AWW = () => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post("http://localhost:3001/add-aww", {
-        name: nameRef.current.value,
+      const response = await axios.post(
+        "https://awc-easy.herokuapp.com/add-aww",
+        {
+          name: nameRef.current.value,
 
-        user_id: useridRef.current.value,
-        mobile_no: mobnumRef.current.value,
-        email: emailRef.current.value,
-        divisionCode: dcodeRef.current.value,
-        centerCode: cRef.current.value,
-        password: passwordRef.current.value,
-      });
+          user_id: useridRef.current.value,
+          mobile_no: mobnumRef.current.value,
+          email: emailRef.current.value,
+          divisionCode: dcodeRef.current.value,
+          centerCode: cRef.current.value,
+          password: passwordRef.current.value,
+        }
+      );
 
       console.log(response);
 

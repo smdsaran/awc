@@ -15,12 +15,15 @@ const LeaveRequest = (props) => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post(`http://localhost:3001/request-leave`, {
-        centerCode: localStorage.getItem("code"),
-        divisionCode: divisionCode.current.value,
-        workerName: workerName.current.value,
-        workerNumber: workerNumber.current.value,
-      });
+      const response = await axios.post(
+        `https://awc-easy.herokuapp.com/request-leave`,
+        {
+          centerCode: localStorage.getItem("code"),
+          divisionCode: divisionCode.current.value,
+          workerName: workerName.current.value,
+          workerNumber: workerNumber.current.value,
+        }
+      );
 
       console.log(response);
 

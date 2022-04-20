@@ -26,7 +26,7 @@ export default function AppBarMuiForSupervisor() {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/getmobnumber/${awc}`
+        `https://awc-easy.herokuapp.com/getmobnumber/${awc}`
       );
 
       console.log(response);

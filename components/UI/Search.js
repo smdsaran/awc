@@ -12,7 +12,7 @@ const Search = (props) => {
     if (e.key === "Enter") {
       try {
         const response = await axios.post(
-          `http://localhost:3001/search-${props.isChildShort}`,
+          `https://awc-easy.herokuapp.com/search-${props.isChildShort}`,
 
           {
             search: searchRef.current.value,

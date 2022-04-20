@@ -20,7 +20,7 @@ const Supervisor = () => {
       setIsLoading(true);
 
       const response = await axios.post(
-        "http://localhost:3001/add-supervisor",
+        "https://awc-easy.herokuapp.com/add-supervisor",
         {
           name: nameRef.current.value,
 

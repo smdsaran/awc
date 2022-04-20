@@ -7,7 +7,7 @@ const BoxContainer = (props) => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3001/delete-leaverequest`,
+        `https://awc-easy.herokuapp.com/delete-leaverequest`,
         {
           data: {
             leaveResponse: "Accept",
@@ -30,7 +30,7 @@ const BoxContainer = (props) => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3001/delete-leaverequest`,
+        `https://awc-easy.herokuapp.com/delete-leaverequest`,
         {
           data: {
             leaveResponse: "Deny",

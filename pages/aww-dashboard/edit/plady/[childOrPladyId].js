@@ -41,7 +41,7 @@ const EditChild = () => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3001/get-plady/${awc}/${id}`
+          `https://awc-easy.herokuapp.com/get-plady/${awc}/${id}`
         );
 
         console.log(response);
@@ -61,21 +61,24 @@ const EditChild = () => {
     try {
       setIsLoading(true);
 
-      const response = await axios.put("http://localhost:3001/edit-plady", {
-        centerCode: centerCodeRef.current.value,
+      const response = await axios.put(
+        "https://awc-easy.herokuapp.com/edit-plady",
+        {
+          centerCode: centerCodeRef.current.value,
 
-        name: nameRef.current.value,
-        age: ageRef.current.value,
-        dob: dobRef.current.value,
-        husbandName: husbandNameRef.current.value,
-        deliveredDate: deliveredDateRef.current.value,
-        pregnancyMonth: pregnancyMonthRef.current.value,
-        mobile_no: mobRef.current.value,
-        address: addressRef.current.value,
-        height: heightRef.current.value,
-        weight: weightRef.current.value,
-        id: id,
-      });
+          name: nameRef.current.value,
+          age: ageRef.current.value,
+          dob: dobRef.current.value,
+          husbandName: husbandNameRef.current.value,
+          deliveredDate: deliveredDateRef.current.value,
+          pregnancyMonth: pregnancyMonthRef.current.value,
+          mobile_no: mobRef.current.value,
+          address: addressRef.current.value,
+          height: heightRef.current.value,
+          weight: weightRef.current.value,
+          id: id,
+        }
+      );
 
       console.log(response);
 

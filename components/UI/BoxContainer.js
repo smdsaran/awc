@@ -18,20 +18,6 @@ const BoxContainer = (props) => {
 
   const editClickHandler = async (e) => {
     router.push(`/aww-dashboard/edit/${props.isChild}/${props.data._id}`);
-    // e.preventDefault();
-
-    // try {
-    //   const response = await axios.put(
-    //     `http://localhost:3001/edit-child`
-    //   );
-
-    //   console.log(response);
-
-    //   props.edited();
-
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   const deleteHandler = async (e) => {
@@ -39,7 +25,7 @@ const BoxContainer = (props) => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3001/delete-${props.isChild}`,
+        `https://awc-easy.herokuapp.com/delete-${props.isChild}`,
         {
           data: {
             id: props.data._id,

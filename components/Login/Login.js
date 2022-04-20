@@ -41,10 +41,13 @@ const Login = (props) => {
     setIsLoading(true);
 
     try {
-      const response = await axios.post("http://localhost:3001/login-aww", {
-        user_id: email,
-        password: password,
-      });
+      const response = await axios.post(
+        "https://awc-easy.herokuapp.com/login-aww",
+        {
+          user_id: email,
+          password: password,
+        }
+      );
 
       console.log(response);
       if (response) {

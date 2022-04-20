@@ -10,7 +10,7 @@ const AWCLists = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/all-awc/${dcode}`
+        `https://awc-easy.herokuapp.com/all-awc/${dcode}`
       );
 
       console.log(response);

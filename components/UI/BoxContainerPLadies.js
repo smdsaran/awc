@@ -18,20 +18,6 @@ const BoxContainerPLadies = (props) => {
 
   const editClickHandler = async (e) => {
     router.push(`/aww-dashboard/edit/${props.isChild}/${props.data._id}`);
-    // e.preventDefault();
-
-    // try {
-    //   const response = await axios.put(
-    //     `http://localhost:3001/edit-child`
-    //   );
-
-    //   console.log(response);
-
-    //   props.edited();
-
-    // } catch (err) {
-    //   console.log(err);
-    // }
   };
 
   const deleteHandler = async (e) => {
@@ -39,7 +25,7 @@ const BoxContainerPLadies = (props) => {
 
     try {
       const response = await axios.delete(
-        `http://localhost:3001/delete-${props.isChild}`,
+        `https://awc-easy.herokuapp.com/delete-${props.isChild}`,
         {
           data: {
             id: props.data._id,
@@ -65,10 +51,9 @@ const BoxContainerPLadies = (props) => {
         </p>
 
         <p className="py-2 w-full hover:cursor-pointer">
-            <strong>Husband Name:</strong>
-            {` ${props.data.husbandName}`}
+          <strong>Husband Name:</strong>
+          {` ${props.data.husbandName}`}
         </p>
-        
 
         {clicked && (
           <p className="py-2 w-full hover:cursor-pointer">
@@ -84,14 +69,14 @@ const BoxContainerPLadies = (props) => {
           </p>
         )}
 
-{clicked && (
+        {clicked && (
           <p className="py-2 w-full hover:cursor-pointer">
             <strong>Baby Delivered Date:</strong>
             {` ${props.data.deliveredDate}`}
           </p>
         )}
 
-{clicked && (
+        {clicked && (
           <p className="py-2 w-full hover:cursor-pointer">
             <strong>Pregnancy Month:</strong>
             {` ${props.data.pregnancyMonth}`}
@@ -154,4 +139,3 @@ const BoxContainerPLadies = (props) => {
 };
 
 export default BoxContainerPLadies;
-

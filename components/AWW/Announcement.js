@@ -13,10 +13,13 @@ const Announcement = (props) => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post(`http://localhost:3001/announcement`, {
-        centerCode: localStorage.getItem("code"),
-        body: body.current.value,
-      });
+      const response = await axios.post(
+        `https://awc-easy.herokuapp.com/announcement`,
+        {
+          centerCode: localStorage.getItem("code"),
+          body: body.current.value,
+        }
+      );
 
       console.log(response);
 

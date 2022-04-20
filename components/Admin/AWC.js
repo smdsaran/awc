@@ -18,7 +18,7 @@ const AWC = () => {
     try {
       setIsLoading(true);
 
-      const response = await axios.post("http://localhost:3001/add-awc", {
+      const response = await axios.post("https://awc-easy.herokuapp.com/add-awc", {
         centerCode: cRef.current.value,
 
         divisionCode: dcodeRef.current.value,

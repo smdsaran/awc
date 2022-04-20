@@ -47,7 +47,7 @@ const AdminLogin = (props) => {
 
     if (isLogin) {
       axios
-        .post("http://localhost:3001/admin_login", {
+        .post("https://awc-easy.herokuapp.com/admin_login", {
           email: email,
           password: password,
         })
@@ -71,7 +71,7 @@ const AdminLogin = (props) => {
         });
     } else {
       axios
-        .post("http://localhost:3001/admin_register", {
+        .post("https://awc-easy.herokuapp.com/admin_register", {
           email: email,
           password: password,
         })

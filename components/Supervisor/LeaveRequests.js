@@ -10,7 +10,7 @@ const LeaveRequests = () => {
   const fetchData = async () => {
     try {
       const response = await axios.get(
-        `http://localhost:3001/view-leaverequest/${dcode}`
+        `https://awc-easy.herokuapp.com/view-leaverequest/${dcode}`
       );
 
       console.log(response);
