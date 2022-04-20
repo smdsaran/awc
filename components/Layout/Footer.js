@@ -124,7 +124,7 @@ const Social = styled.div`
 const CopyRight = styled.p`
   font-size: 10px;
   font-family: arial, san-serif;
-  width: 30%;
+  width: 10%;
   // position: absolute;
   // top: 70%;
   // left: 50%;
@@ -136,7 +136,7 @@ const CopyRight = styled.p`
 
   @media (max-width: 768px) {
     font-size: 9px;
-    width: 90%;
+    width: 40%;
   }
 `;
 
