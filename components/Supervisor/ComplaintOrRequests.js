@@ -35,15 +35,6 @@ const ComplaintOrRequests = () => {
     setImage(data);
   };
 
-  const fetchImagesWithAxios = async (url) => {
-    let res = await fetch(url);
-    let data = res.url;
-
-    console.log(res);
-    console.log(data);
-    setImage(data);
-  };
-
   let listing;
 
   if (datas !== undefined) {
