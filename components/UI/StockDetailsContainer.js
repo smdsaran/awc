@@ -7,20 +7,6 @@ const StockDetailsContainer = () => {
 
   let awc = localStorage.getItem("code");
 
-  const fetchData = async () => {
-    try {
-      const response = await axios.get(
-        `http://localhost:3001/view-stocks/${awc}`
-      );
-
-      console.log(response);
-
-      setData(response.data);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
   const fetchImages = async (url) => {
     let res = await fetch(url);
 
@@ -31,36 +17,89 @@ const StockDetailsContainer = () => {
   };
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://awc-easy.herokuapp.com/view-stocks/${awc}`
+        );
+
+        console.log(response);
+
+        setData(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
     fetchData();
-    fetchImages(`http://localhost:3001/uploads/${data.billImage}`);
   }, [awc]);
 
-  console.log(data);
+  // let imgName = data.delivered.billImage;
+
+  // useEffect(() => {
+  //   fetchImages(`https://awc-easy.herokuapp.com/uploads/${imgName}`);
+  // }, [imgName]);
+
+  // console.log(data);
 
   let dataView;
-  if (data === {}) {
-    dataView = <div>No Stock Details Available.</div>;
-  } else {
-    dataView = (
-      <div>
-        <p>{data.deliveryDate}</p>
-        <p>{data.delivered.oilInLitre}</p>
-        <p>{data.delivered.pulseInKg}</p>
-        <p>{data.delivered.nutritionFlourInPacket}</p>
-        <p>{data.delivered.eggInNum}</p>
-        <p>{data.delivered.riceInKg}</p>
+  // if (data === ) {
+  //   dataView = <div>No Stock Details Available.</div>;
+  // } else {
 
-        <p>{data.existing.oilInLitre}</p>
-        <p>{data.existing.pulseInKg}</p>
-        <p>{data.existing.nutritionFlourInPacket}</p>
-        <p>{data.existing.eggInNum}</p>
-        <p>{data.existing.riceInKg}</p>
-        <img src={image} alt="Bill Image" />
-      </div>
-    );
-  }
+  return (
+    <>
+      {data.deliveryDate && (
+        <div className="w-10/12 md:w-6/12 h-auto shadow-lg my-4 block ml-auto mr-auto">
+          <div className="w-10/12 md:w-6/12 h-auto my-4 block ml-auto mr-auto">
+            <div className="w-full flex mt-4 justify-between">
+              <h2 className="font-bold text-lg">Delivered Quantities</h2>
+              <p className="text-red-600">{`${data.deliveryDate}`}</p>
+            </div>
 
-  return <>{dataView}</>;
+            <p>{`Oil${"         "} = ${data.delivered.oilInLitre} L`}</p>
+            <p>{`Pulse             = ${data.delivered.pulseInKg} Kg`}</p>
+            <p>{`Nutritional Flour = ${data.delivered.nutritionFlourInPacket} Packets`}</p>
+            <p>{`Egg               = ${data.delivered.eggInNum} Plates`}</p>
+            <p>{`Rice              = ${data.delivered.riceInKg} Kg`}</p>
+          </div>
+
+          <hr />
+
+          <div className="w-10/12 md:w-6/12 h-auto my-4 block ml-auto mr-auto">
+            <h2 className="font-bold text-lg">Remaining Quantities</h2>
+            <p>{`Oil               = ${
+              Number(data.delivered.oilInLitre) -
+              Number(data.existing.oilInLitre)
+            } L`}</p>
+            <p>{`Pulse             = ${
+              Number(data.delivered.pulseInKg) - Number(data.existing.pulseInKg)
+            } Kg`}</p>
+            <p>{`Nutritional Flour = ${
+              Number(data.delivered.nutritionFlourInPacket) -
+              Number(data.existing.nutritionFlourInPacket)
+            } Packets`}</p>
+            <p>{`Egg               = ${
+              Number(data.delivered.eggInNum) - Number(data.existing.eggInNum)
+            } Plates`}</p>
+            <p>{`Rice              = ${
+              Number(data.delivered.riceInKg) - Number(data.existing.riceInKg)
+            } Kg`}</p>
+          </div>
+
+          <hr />
+
+          <p>{data.delivered.billImage}</p>
+
+          <img
+            src={image}
+            alt="Bill Image"
+            className="w-10/12 md:w-6/12 h-auto my-4 block ml-auto mr-auto"
+          />
+        </div>
+      )}
+    </>
+  );
 };
 
 export default StockDetailsContainer;

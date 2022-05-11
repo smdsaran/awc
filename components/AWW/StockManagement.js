@@ -27,6 +27,8 @@ const StockManagement = () => {
   const deliveredOnClickHandler = async (e) => {
     e.preventDefault();
 
+    const fd = new FormData();
+
     fd.append("centerCode", localStorage.getItem("code"));
     fd.append("oilInLitre", oilInLitre.current.value);
     fd.append("pulseInKg", pulseInKg.current.value);
@@ -39,7 +41,7 @@ const StockManagement = () => {
       setIsLoading(true);
 
       const response = await axios.post(
-        `http://localhost:3001/addStockDetails`,
+        `https://awc-easy.herokuapp.com/addStockDetails`,
         fd
       );
 
@@ -61,7 +63,7 @@ const StockManagement = () => {
       setIsLoading(true);
 
       const response = await axios.post(
-        `http://localhost:3001/existingStockDetails`,
+        `https://awc-easy.herokuapp.com/existingStockDetails`,
         {
           centerCode: localStorage.getItem("code"),
           oilInLitre: oilInLitre.current.value,
@@ -98,31 +100,31 @@ const StockManagement = () => {
             {status ? status : "Add"}
           </h1>
           <input
-            type="text"
+            type="number"
             placeholder="Oils In Litre"
             className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={oilInLitre}
           />
           <input
-            type="text"
+            type="number"
             placeholder="Pulse In Kg"
             className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={pulseInKg}
           />
           <input
-            type="text"
+            type="number"
             placeholder="Rice In Kg"
             className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={riceInKg}
           />
           <input
-            type="text"
+            type="number"
             placeholder="Nutrition Flour In Packets"
             className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={nutritionFlourInPacket}
           />
           <input
-            type="text"
+            type="number"
             placeholder="Eggs In Num"
             className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={eggInNum}
@@ -163,7 +165,7 @@ const StockManagement = () => {
         </form>
       </div>
 
-      <StockDetailsContainer />
+      <StockDetailsContainer key="stocks" />
     </div>
   );
 };

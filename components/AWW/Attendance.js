@@ -1,13 +1,163 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import styled from "styled-components";
+import DropDownAttendance from "../UI/DropDownAttendance";
+import AttendanceContainer from "../UI/AttendanceContainer";
 
 const Attendance = () => {
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [status, setStatus] = useState("");
+  const [sentData, setSentData] = useState([]);
+  const [pcolourClicked, psetColourClicked] = useState(false);
+
+  const [days, setDays] = useState("today");
+  const [attendanceDatas, setAttendanceDatas] = useState([]);
+
+  let awc = localStorage.getItem("code");
+
+  const fetchAttendance = async () => {
+    try {
+      const response = await axios.get(
+        `https://awc-easy.herokuapp.com/view-attendance/${awc}/${days}`
+      );
+
+      console.log(response);
+
+      setAttendanceDatas(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `https://awc-easy.herokuapp.com/readAwws/${awc}`
+        );
+
+        console.log(response);
+
+        setData(response.data);
+      } catch (err) {
+        console.log(err);
+      }
+    };
+
+    fetchData();
+    fetchAttendance();
+  }, [awc, days]);
+
+  const attendancePresentClickHandler = (e, d) => {
+    e.preventDefault();
+    psetColourClicked(!pcolourClicked);
+    setSentData([...sentData, { name: d.name, present: "Present" }]);
+  };
+
+  const attendanceAbsentClickHandler = (e, d) => {
+    e.preventDefault();
+    psetColourClicked(!pcolourClicked);
+    setSentData([...sentData, { name: d.name, present: "Absent" }]);
+  };
+
+  const formSubmitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      setIsLoading(true);
+
+      const response = await axios.post(
+        `https://awc-easy.herokuapp.com/attendanceEntry`,
+        {
+          centerCode: localStorage.getItem("code"),
+          attendance: sentData,
+        }
+      );
+
+      console.log(response);
+
+      if (response.statusText === "OK") setStatus(response.data);
+    } catch (err) {
+      console.log(err);
+      setStatus("Something Went Wrong, Try Again.");
+    }
+
+    fetchAttendance();
+    setIsLoading(false);
+  };
+
+  const selectedDays = (days) => {
+    console.log(days);
+    setDays(days);
+  };
+
+  const listName = data.map((d) => {
+    return (
+      <div className="w-full flex justify-between p-1" key={d._id}>
+        <p>{d.name}</p>
+        <div className="w-14 flex justify-between">
+          <button
+            className="w-2/5 bg-green-600 text-white"
+            onClick={(e) => attendancePresentClickHandler(e, d)}
+          >
+            P
+          </button>
+          <button
+            className="w-2/5 bg-red-600 text-white"
+            onClick={(e) => attendanceAbsentClickHandler(e, d)}
+          >
+            A
+          </button>
+        </div>
+      </div>
+    );
+  });
+
+  const listAttendance = attendanceDatas.map((data) => {
+    return (
+      <AttendanceContainer
+        datas={data.attendance}
+        date={data.date}
+        key={data._id}
+      />
+    );
+  });
+
   return (
     <div>
       <div className="text-center bg-purple-700 text-3xl py-4 text-white">
         Attendance
       </div>
+
+      <form
+        className="w-10/12 h-auto md:w-6/12 mr-auto ml-auto mt-4"
+        onSubmit={formSubmitHandler}
+      >
+        <h1 className="text-center text-blue-800">{status ? status : ""}</h1>
+
+        {listName}
+
+        <button
+          type="submit"
+          className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+        >
+          {isLoading ? "..." : "Submit"}
+        </button>
+      </form>
+
+      <DropDownAttendance selected={selectedDays} />
+
+      {listAttendance}
     </div>
   );
 };
 
+// const Pbutton = styled.button`
+//   background-color: ${(props) => (props.colour ? "gray" : "green")};
+// `;
+
+// const Abutton = styled.button`
+//   background-color: ${(props) => (props.colour ? "gray" : "red")};
+// `;
 export default Attendance;
