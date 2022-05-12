@@ -49,6 +49,7 @@ const Announcement = (props) => {
 
           <textarea
             type="text"
+            rows="5"
             placeholder="Body"
             className="w-full border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={body}
