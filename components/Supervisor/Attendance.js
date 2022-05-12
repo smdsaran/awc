@@ -45,7 +45,7 @@ const Attendance = () => {
 
   return (
     <div>
-      <div className="text-center bg-purple-700 text-3xl py-4 text-white">
+      <div className="text-center bg-purple-700 text-3xl py-4 text-white mb-8">
         Attendance
       </div>
 

@@ -77,7 +77,7 @@ const Login = (props) => {
   return (
     <main className={classes.main}>
       <form className={classes.auth} onSubmit={formSubmitHandler}>
-        <h1>{!isLoading ? "Login" : "Loading..."}</h1>
+        <h1>Supervisor Login</h1>
 
         <div className={classes.control}>
           <label htmlFor="email_input">User ID</label>

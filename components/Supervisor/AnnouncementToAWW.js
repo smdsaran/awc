@@ -66,4 +66,6 @@ const Announcement = (props) => {
   );
 };
 
+// https://awc-easy.herokuapp.com
+
 export default Announcement;
