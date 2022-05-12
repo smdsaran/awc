@@ -13,7 +13,8 @@ const StockManagement = () => {
   const eggInNum = useRef();
   const riceInKg = useRef();
 
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingDelivered, setIsLoadingDelivered] = useState(false);
+  const [isLoadingExisting, setIsLoadingExisting] = useState(false);
   const [status, setStatus] = useState("");
 
   const [img, setImg] = useState(null);
@@ -38,7 +39,7 @@ const StockManagement = () => {
     fd.append("photo", img);
 
     try {
-      setIsLoading(true);
+      setIsLoadingDelivered(true);
 
       const response = await axios.post(
         `https://awc-easy.herokuapp.com/addStockDetails`,
@@ -53,14 +54,14 @@ const StockManagement = () => {
       setStatus("Something Went Wrong, Try Again.");
     }
 
-    setIsLoading(false);
+    setIsLoadingDelivered(false);
   };
 
   const exixtingOnClickHandler = async (e) => {
     e.preventDefault();
 
     try {
-      setIsLoading(true);
+      setIsLoadingExisting(true);
 
       const response = await axios.post(
         `https://awc-easy.herokuapp.com/existingStockDetails`,
@@ -82,7 +83,7 @@ const StockManagement = () => {
       setStatus("Something Went Wrong, Try Again.");
     }
 
-    setIsLoading(false);
+    setIsLoadingExisting(false);
   };
 
   return (
@@ -152,7 +153,7 @@ const StockManagement = () => {
             className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
             onClick={deliveredOnClickHandler}
           >
-            {isLoading ? "..." : "Submit"}
+            {isLoadingDelivered ? "..." : "Submit"}
           </button>
 
           <button
@@ -160,7 +161,7 @@ const StockManagement = () => {
             className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
             onClick={exixtingOnClickHandler}
           >
-            {isLoading ? "..." : "Update"}
+            {isLoadingExisting ? "..." : "Update"}
           </button>
         </form>
       </div>

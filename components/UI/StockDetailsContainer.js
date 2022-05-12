@@ -34,15 +34,16 @@ const StockDetailsContainer = () => {
     fetchData();
   }, [awc]);
 
-  // let imgName = data.delivered.billImage;
+  let imgName = data?.delivered?.billImage;
 
-  // useEffect(() => {
-  //   fetchImages(`https://awc-easy.herokuapp.com/uploads/${imgName}`);
-  // }, [imgName]);
+  useEffect(() => {
+    if (imgName)
+      return fetchImages(`https://awc-easy.herokuapp.com/uploads/${imgName}`);
+  }, [imgName]);
 
-  // console.log(data);
+  // console.log(data?.delivered?.billImage);
 
-  let dataView;
+  // let dataView;
   // if (data === ) {
   //   dataView = <div>No Stock Details Available.</div>;
   // } else {
@@ -89,12 +90,10 @@ const StockDetailsContainer = () => {
 
           <hr />
 
-          <p>{data.delivered.billImage}</p>
-
           <img
             src={image}
             alt="Bill Image"
-            className="w-10/12 md:w-6/12 h-auto my-4 block ml-auto mr-auto"
+            className="w-10/12 md:w-6/12 h-auto mt-4 mb-4 block ml-auto mr-auto"
           />
         </div>
       )}

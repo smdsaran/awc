@@ -3,9 +3,11 @@ import ChildrensForm from "./ChildrensForm";
 import BoxContainerPLadies from "../UI/BoxContainerPLadies";
 import Search from "../UI/Search";
 import axios from "axios";
+import styled from "styled-components";
 
 const PregnantLadies = () => {
   const [datas, setDatas] = useState([]);
+  const [found, setFound] = useState("");
 
   let awc = localStorage.getItem("code");
 
@@ -51,6 +53,9 @@ const PregnantLadies = () => {
   }
 
   const searchHandler = (data) => {
+    if (data.length === 0) setFound("No Details Found.");
+    else setFound("Details Found.");
+
     setDatas(data);
   };
 
@@ -64,6 +69,11 @@ const PregnantLadies = () => {
         isChild="Pregnant Ladies"
         searching={searchHandler}
       />
+
+      <P className="text-center" isFound={found}>
+        {found}
+      </P>
+
       <ChildrensForm
         submited={formSubmitted}
         isChild="Pregnant Lady"
@@ -73,5 +83,9 @@ const PregnantLadies = () => {
     </div>
   );
 };
+
+const P = styled.p`
+  color: ${(props) => (props.isFound === "Details Found." ? "green" : "red")};
+`;
 
 export default PregnantLadies;

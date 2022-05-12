@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
+import encrypt from "../../lib/Crypto";
 
 const Announcement = (props) => {
   const body = useRef();
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
+
+  let encryptedBody = encrypt(body?.current?.value);
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
@@ -17,7 +20,7 @@ const Announcement = (props) => {
         `https://awc-easy.herokuapp.com/announcementtoawws`,
         {
           divisionCode: localStorage.getItem("dcode"),
-          body: body.current.value,
+          body: encryptedBody,
         }
       );
 

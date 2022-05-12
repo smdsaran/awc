@@ -51,15 +51,27 @@ const Attendance = () => {
 
   const attendancePresentClickHandler = (e, d) => {
     e.preventDefault();
-    psetColourClicked(!pcolourClicked);
-    setSentData([...sentData, { name: d.name, present: "Present" }]);
+
+    let filtered = sentData.filter((data) => data.name !== d.name);
+
+    setSentData([...filtered, { name: d.name, present: "Present" }]);
+
+    // psetColourClicked(!pcolourClicked);
+    // setSentData([...sentData, { name: d.name, present: "Present" }]);
   };
 
   const attendanceAbsentClickHandler = (e, d) => {
     e.preventDefault();
-    psetColourClicked(!pcolourClicked);
-    setSentData([...sentData, { name: d.name, present: "Absent" }]);
+
+    let filtered = sentData.filter((data) => data.name !== d.name);
+
+    setSentData([...filtered, { name: d.name, present: "Absent" }]);
+
+    // psetColourClicked(!pcolourClicked);
+    // setSentData([...sentData, { name: d.name, present: "Absent" }]);
   };
+
+  console.log(sentData);
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
@@ -96,15 +108,15 @@ const Attendance = () => {
     return (
       <div className="w-full flex justify-between p-1" key={d._id}>
         <p>{d.name}</p>
-        <div className="w-14 flex justify-between">
+        <div className="w-28 flex justify-between">
           <button
-            className="w-2/5 bg-green-600 text-white"
+            className="w-2/5 bg-green-600 text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
             onClick={(e) => attendancePresentClickHandler(e, d)}
           >
             P
           </button>
           <button
-            className="w-2/5 bg-red-600 text-white"
+            className="w-2/5 bg-red-600 text-white hover:bg-violet-600 active:bg-violet-700 focus:outline-none focus:ring focus:ring-violet-300"
             onClick={(e) => attendanceAbsentClickHandler(e, d)}
           >
             A
