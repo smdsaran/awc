@@ -53,21 +53,20 @@ const AdminLogin = (props) => {
         })
         .then((response) => {
           console.log(response);
-          if (response) {
-            // console.log(response.data.accessToken);
 
-            AuthCtx.login(response.data.accessToken);
-            // localStorage.setItem("token", response.data.accessToken);
-            localStorage.setItem("email", response.data.email);
+          // console.log(response.data.accessToken);
 
-            router.push("/admin-dashboard");
-          } else {
-            throw new Error(response.data.message);
-          }
+          AuthCtx.login(response.data.accessToken);
+          // localStorage.setItem("token", response.data.accessToken);
+          localStorage.setItem("email", response.data.email);
+
+          router.push("/admin-dashboard");
         })
         .catch(function (error) {
-          console.log(error);
-          setError("Login Failed");
+          if (error.message === "Request failed with status code 401")
+            setError("Unauthorized Credentials");
+          if (error.message === "Request failed with status code 429")
+            setError("Too Many Requests. Try Again Tomorrow");
         });
     } else {
       axios
@@ -77,15 +76,13 @@ const AdminLogin = (props) => {
         })
         .then((response) => {
           console.log(response);
-          if (response) {
-            setIsLogin(true);
-          } else {
-            throw new Error(response.data.message);
-          }
+
+          setIsLogin(true);
         })
         .catch(function (error) {
           console.log(error);
-          setError("Login Failed");
+
+          setError("Registration Failed");
         });
     }
 
@@ -94,7 +91,7 @@ const AdminLogin = (props) => {
 
   let signal;
   if (error) {
-    signal = <p>{error}</p>;
+    signal = <p className="mt-4 text-center text-red-600">{error}</p>;
   }
 
   return (

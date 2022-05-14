@@ -9,12 +9,81 @@ const Attendance = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
   const [sentData, setSentData] = useState([]);
-  const [pcolourClicked, psetColourClicked] = useState(false);
+  // const [coords, setCoords] = useState({});
+  // const [place, setPlace] = useState("");
+  // const [awcData, setAwcData] = useState({});
+  // const [samePlace, setSamePlace] = useState(false);
 
   const [days, setDays] = useState("today");
   const [attendanceDatas, setAttendanceDatas] = useState([]);
 
   let awc = localStorage.getItem("code");
+
+  // var options = {
+  //   enableHighAccuracy: true,
+  //   timeout: 5000,
+  //   maximumAge: 0,
+  // };
+
+  // function error(err) {
+  //   console.warn(`ERROR(${err.code}): ${err.message}`);
+  // }
+
+  // useEffect(() => {
+  //   navigator.geolocation.getCurrentPosition(
+  //     (pos) => {
+  //       console.log(pos);
+  //       // const newPos = {
+  //       //   latitude: pos.coords.latitude,
+  //       //   longitude: pos.coords.longitude,
+  //       // };
+
+  //       setCoords({
+  //         latitude: pos.coords.latitude,
+  //         longitude: pos.coords.longitude,
+  //       });
+  //     },
+  //     error,
+  //     options
+  //   );
+  // }, []);
+
+  // const successfulLookup = async () => {
+  //   let latitude = coords?.latitude;
+  //   let longitude = coords?.longitude;
+
+  //   console.log(latitude, longitude);
+
+  //   const res = await axios.get(
+  //     `https://api.opencagedata.com/geocode/v1/json?key=8e0dfdbc7d6341afbbff9e84bc1b39a6&q=${latitude}+${longitude}`
+  //   );
+
+  //   console.log(res.data);
+
+  //   setPlace(res.data.results[0].formatted);
+  // };
+
+  // useEffect(() => {
+  //   successfulLookup();
+  // }, []);
+
+  // const fetchAWC = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `https://awc-easy.herokuapp.com/readAWC/${awc}`
+  //     );
+
+  //     console.log(response);
+
+  //     setAwcData(response.data);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   fetchAWC();
+  // }, []);
 
   const fetchAttendance = async () => {
     try {
@@ -71,8 +140,6 @@ const Attendance = () => {
     // setSentData([...sentData, { name: d.name, present: "Absent" }]);
   };
 
-  console.log(sentData);
-
   const formSubmitHandler = async (e) => {
     e.preventDefault();
 
@@ -103,6 +170,15 @@ const Attendance = () => {
     console.log(days);
     setDays(days);
   };
+
+  // let regEx1 = new RegExp(`\\b${awcData.streetOrArea}\\b`, "gi");
+  // let regEx2 = new RegExp(`\\b${awcData.cityOrVillage}\\b`, "gi");
+
+  // console.log(place);
+
+  // if (place.match(regEx1) || place.match(regEx2)) {
+  //   setSamePlace(true);
+  // }
 
   const listName = data.map((d) => {
     return (
@@ -138,10 +214,11 @@ const Attendance = () => {
 
   return (
     <div>
-      <div className="text-center bg-purple-700 text-3xl py-4 text-white">
+      <div className="text-center bg-purple-700 text-3xl py-4 text-white mb-4">
         Attendance
       </div>
 
+      {/* {samePlace && ( */}
       <form
         className="w-10/12 h-auto md:w-6/12 mr-auto ml-auto mt-4"
         onSubmit={formSubmitHandler}
@@ -157,6 +234,13 @@ const Attendance = () => {
           {isLoading ? "..." : "Submit"}
         </button>
       </form>
+      {/* )} */}
+
+      {/* {!samePlace && (
+      <p className="text-center text-red-600 mb-8">
+        You are not in nearby AWC area.
+      </p> */}
+      {/* )} */}
 
       <DropDownAttendance selected={selectedDays} />
 

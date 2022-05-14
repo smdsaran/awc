@@ -44,7 +44,7 @@ const Login = (props) => {
 
     try {
       const response = await axios.post(
-        "https://awc-easy.herokuapp.com/login-supervisor",
+        "http://localhost:3001/login-supervisor",
         {
           user_id: email,
           password: password,
@@ -63,7 +63,11 @@ const Login = (props) => {
       }
     } catch (error) {
       console.log(error);
-      setError("Login Failed");
+
+      if (error.message === "Request failed with status code 401")
+        setError("Unauthorized Credentials");
+      if (error.message === "Request failed with status code 429")
+        setError("Too Many Requests. Try Again Tomorrow");
     }
 
     setIsLoading(false);
@@ -71,7 +75,7 @@ const Login = (props) => {
 
   let signal;
   if (error) {
-    signal = <p>{error}</p>;
+    signal = <p className="mt-4 text-center text-red-600">{error}</p>;
   }
 
   return (
