@@ -42,9 +42,7 @@ const Login = (props) => {
 
     try {
       const response = await axios.post(
-        // https://awc-easy.herokuapp.com
-
-        "http://localhost:3001/login-aww",
+        "https://awc-easy.herokuapp.com/login-aww",
         {
           user_id: email,
           password: password,
