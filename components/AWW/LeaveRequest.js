@@ -5,6 +5,7 @@ const LeaveRequest = (props) => {
   const divisionCode = useRef();
   const workerName = useRef();
   const workerNumber = useRef();
+  const workerEmail = useRef();
   const reason = useRef();
 
   const [isLoading, setIsLoading] = useState(false);
@@ -23,6 +24,7 @@ const LeaveRequest = (props) => {
           divisionCode: divisionCode.current.value,
           workerName: workerName.current.value,
           workerNumber: workerNumber.current.value,
+          workerEmail: workerEmail.current.value,
           reason: reason.current.value,
         }
       );
@@ -69,6 +71,13 @@ const LeaveRequest = (props) => {
             pattern="[0-9]{10}"
             className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
             ref={workerNumber}
+          />
+
+          <input
+            type="email"
+            placeholder="Worker Email"
+            className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+            ref={workerEmail}
           />
 
           <textarea

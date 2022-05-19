@@ -12,6 +12,7 @@ const BoxContainer = (props) => {
           data: {
             leaveResponse: "Accept",
             number: props.data.workerNumber,
+            email: props.data.workerEmail,
             id: props.data._id,
           },
         }
@@ -35,6 +36,7 @@ const BoxContainer = (props) => {
           data: {
             leaveResponse: "Deny",
             number: props.data.workerNumber,
+            email: props.data.workerEmail,
             id: props.data._id,
           },
         }
