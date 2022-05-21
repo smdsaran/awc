@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 
-const StockDetailsContainer = () => {
+const StockDetailsContainer = (props) => {
   const [data, setData] = useState({});
   const [image, setImage] = useState("");
 
@@ -16,21 +16,21 @@ const StockDetailsContainer = () => {
     setImage(data);
   };
 
+  const fetchData = async () => {
+    try {
+      const response = await axios.get(
+        `https://awc-easy.herokuapp.com/view-stocks/${awc}`
+      );
+
+      console.log(response);
+
+      setData(response.data);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get(
-          `https://awc-easy.herokuapp.com/view-stocks/${awc}`
-        );
-
-        console.log(response);
-
-        setData(response.data);
-      } catch (err) {
-        console.log(err);
-      }
-    };
-
     fetchData();
   }, [awc]);
 
@@ -41,12 +41,10 @@ const StockDetailsContainer = () => {
       return fetchImages(`https://awc-easy.herokuapp.com/uploads/${imgName}`);
   }, [imgName]);
 
-  // console.log(data?.delivered?.billImage);
-
-  // let dataView;
-  // if (data === ) {
-  //   dataView = <div>No Stock Details Available.</div>;
-  // } else {
+  if (props.isSubmited === "Yes") {
+    fetchData();
+    props.changeState();
+  }
 
   return (
     <>
@@ -68,7 +66,7 @@ const StockDetailsContainer = () => {
           <hr />
 
           <div className="w-10/12 md:w-6/12 h-auto my-4 block ml-auto mr-auto">
-            <h2 className="font-bold text-lg">Remaining Quantities</h2>
+            <h2 className="font-bold text-lg">Used Quantities</h2>
             <p>{`Oil               = ${
               Number(data.delivered.oilInLitre) -
               Number(data.existing.oilInLitre)
@@ -86,6 +84,18 @@ const StockDetailsContainer = () => {
             <p>{`Rice              = ${
               Number(data.delivered.riceInKg) - Number(data.existing.riceInKg)
             } Kg`}</p>
+          </div>
+
+          <hr />
+
+          <div className="w-10/12 md:w-6/12 h-auto my-4 block ml-auto mr-auto">
+            <h2 className="font-bold text-lg">Remaining Quantities</h2>
+
+            <p>{`Oil${"         "} = ${data.existing.oilInLitre} L`}</p>
+            <p>{`Pulse             = ${data.existing.pulseInKg} Kg`}</p>
+            <p>{`Nutritional Flour = ${data.existing.nutritionFlourInPacket} Packets`}</p>
+            <p>{`Egg               = ${data.existing.eggInNum} Plates`}</p>
+            <p>{`Rice              = ${data.existing.riceInKg} Kg`}</p>
           </div>
 
           <hr />

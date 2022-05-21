@@ -15,6 +15,7 @@ const StockManagement = () => {
 
   const [isLoadingDelivered, setIsLoadingDelivered] = useState(false);
   const [isLoadingExisting, setIsLoadingExisting] = useState(false);
+  const [submited, setSubmited] = useState("No");
   const [status, setStatus] = useState("");
 
   const [img, setImg] = useState(null);
@@ -55,6 +56,7 @@ const StockManagement = () => {
     }
 
     setIsLoadingDelivered(false);
+    setSubmited("Yes");
   };
 
   const exixtingOnClickHandler = async (e) => {
@@ -84,6 +86,11 @@ const StockManagement = () => {
     }
 
     setIsLoadingExisting(false);
+    setSubmited("Yes");
+  };
+
+  const stateChangeHandler = () => {
+    setSubmited("No");
   };
 
   return (
@@ -166,7 +173,11 @@ const StockManagement = () => {
         </form>
       </div>
 
-      <StockDetailsContainer key="stocks" />
+      <StockDetailsContainer
+        key="stocks"
+        isSubmited={submited}
+        changeState={stateChangeHandler}
+      />
     </div>
   );
 };
