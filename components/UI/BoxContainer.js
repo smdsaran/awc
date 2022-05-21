@@ -113,6 +113,11 @@ const BoxContainer = (props) => {
         )}
       </div>
 
+      <div className="py-2 w-full hover:cursor-pointer bg-lime-500 text-white">
+        <strong>BMI:</strong>
+        {` ${props.data.bmi}`}
+      </div>
+
       <div className="flex">
         <button
           className="py-2 mx-10 w-full hover:cursor-pointer text-green-600"
