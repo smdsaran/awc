@@ -89,6 +89,13 @@ const BoxContainer = (props) => {
             </p>
           </div>
         )}
+
+        {props.isChild === "child" && (
+          <div className="py-2 w-full hover:cursor-pointer bg-lime-500 text-white">
+            <strong>BMI:</strong>
+            {` ${props.data.bmi}`}
+          </div>
+        )}
       </div>
     </div>
   );
