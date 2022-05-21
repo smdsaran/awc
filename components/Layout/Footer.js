@@ -59,7 +59,7 @@ const FooterSection = styled.div`
   background-color: #232f3e;
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.21);
-  margin-top: 25%;
+  margin-top: 50vh;
 `;
 
 const Flex1 = styled.div`
