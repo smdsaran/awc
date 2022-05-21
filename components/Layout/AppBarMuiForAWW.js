@@ -97,7 +97,7 @@ export default function AppBarMuiForAWW() {
             className="py-2 w-full hover:cursor-pointer"
             onClick={p3ClickHandler}
           >
-            Attendance Entry
+            AWW Attendance
           </p>
 
           <p

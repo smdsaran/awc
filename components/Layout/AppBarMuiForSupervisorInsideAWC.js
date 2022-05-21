@@ -122,7 +122,7 @@ export default function AppBarMuiForSupervisor() {
             className="py-2 w-full hover:cursor-pointer"
             onClick={p3ClickHandler}
           >
-            Attendance
+            AWW Attendance
           </p>
 
           <p
