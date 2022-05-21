@@ -4,13 +4,44 @@ import axios from "axios";
 const AWC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [longitude, setLongitude] = useState("");
+  const [locationFetch, setLocationFetch] = useState(false);
 
   const cRef = useRef();
   const dcodeRef = useRef();
   const pincodeRef = useRef();
+  const streetRef = useRef();
   const areaRef = useRef();
   const districtRef = useRef();
   const stateRef = useRef();
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  const locationHandler = (e) => {
+    e.preventDefault();
+
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        console.log(pos);
+
+        setLatitude(pos.coords.latitude);
+        setLongitude(pos.coords.longitude);
+      },
+      error,
+      options
+    );
+
+    setLocationFetch(true);
+  };
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
@@ -25,6 +56,9 @@ const AWC = () => {
 
           divisionCode: dcodeRef.current.value,
           pincode: pincodeRef.current.value,
+          latitude: latitude,
+          longitude: longitude,
+          streetOrArea: streetRef.current.value,
           cityOrVillage: areaRef.current.value,
           district: districtRef.current.value,
           state: stateRef.current.value,
@@ -70,6 +104,12 @@ const AWC = () => {
         />
         <input
           type="text"
+          placeholder="Street"
+          className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
+          ref={streetRef}
+        />
+        <input
+          type="text"
           placeholder="Area"
           className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={areaRef}
@@ -86,6 +126,15 @@ const AWC = () => {
           className="w-full h-8 border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
           ref={stateRef}
         />
+
+        <button
+          onClick={locationHandler}
+          type="button"
+          className="w-full h-10 border rounded-sm bg-green-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+        >
+          {!locationFetch ? "Fetch Location" : "Location Fetched."}
+        </button>
+
         <button
           type="submit"
           className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"

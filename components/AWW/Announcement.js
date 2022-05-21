@@ -3,12 +3,18 @@ import axios from "axios";
 import encrypt from "../../lib/Crypto";
 
 const Announcement = (props) => {
-  const body = useRef();
+  // const body = useRef();
+
+  const [body, setBody] = useState("");
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
 
-  let encryptedBody = encrypt(body?.current?.value);
+  let encryptedBody = encrypt(body);
+
+  const bodyChangeHandler = (e) => {
+    setBody(e.target.value);
+  };
 
   const formSubmitHandler = async (e) => {
     e.preventDefault();
@@ -52,7 +58,7 @@ const Announcement = (props) => {
             rows="5"
             placeholder="Body"
             className="w-full border rounded-sm border-black my-4 text-center block mr-auto ml-auto"
-            ref={body}
+            onChange={bodyChangeHandler}
           />
 
           <button

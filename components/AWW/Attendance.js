@@ -9,44 +9,16 @@ const Attendance = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
   const [sentData, setSentData] = useState([]);
-  // const [coords, setCoords] = useState({});
+  const [latitude, setLatitude] = useState(null);
+  const [longitude, setLongitude] = useState(null);
   // const [place, setPlace] = useState("");
   // const [awcData, setAwcData] = useState({});
-  // const [samePlace, setSamePlace] = useState(false);
+  const [samePlace, setSamePlace] = useState("Loading");
 
   const [days, setDays] = useState("today");
-  const [attendanceDatas, setAttendanceDatas] = useState([]);
+  const [attendanceDatas, setAttendanceDatas] = useState({});
 
   let awc = localStorage.getItem("code");
-
-  // var options = {
-  //   enableHighAccuracy: true,
-  //   timeout: 5000,
-  //   maximumAge: 0,
-  // };
-
-  // function error(err) {
-  //   console.warn(`ERROR(${err.code}): ${err.message}`);
-  // }
-
-  // useEffect(() => {
-  //   navigator.geolocation.getCurrentPosition(
-  //     (pos) => {
-  //       console.log(pos);
-  //       // const newPos = {
-  //       //   latitude: pos.coords.latitude,
-  //       //   longitude: pos.coords.longitude,
-  //       // };
-
-  //       setCoords({
-  //         latitude: pos.coords.latitude,
-  //         longitude: pos.coords.longitude,
-  //       });
-  //     },
-  //     error,
-  //     options
-  //   );
-  // }, []);
 
   // const successfulLookup = async () => {
   //   let latitude = coords?.latitude;
@@ -100,6 +72,8 @@ const Attendance = () => {
   };
 
   useEffect(() => {
+    fetchAttendance();
+
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -115,8 +89,30 @@ const Attendance = () => {
     };
 
     fetchData();
-    fetchAttendance();
   }, [awc, days]);
+
+  var options = {
+    enableHighAccuracy: true,
+    timeout: 5000,
+    maximumAge: 0,
+  };
+
+  function error(err) {
+    console.warn(`ERROR(${err.code}): ${err.message}`);
+  }
+
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        console.log(pos);
+
+        setLatitude(pos.coords.latitude);
+        setLongitude(pos.coords.longitude);
+      },
+      error,
+      options
+    );
+  }, []);
 
   const attendancePresentClickHandler = (e, d) => {
     e.preventDefault();
@@ -176,9 +172,23 @@ const Attendance = () => {
 
   // console.log(place);
 
-  // if (place.match(regEx1) || place.match(regEx2)) {
-  //   setSamePlace(true);
-  // }
+  useEffect(() => {
+    if (
+      attendanceDatas?.latitude === String(latitude) &&
+      attendanceDatas?.longitude === String(longitude)
+    ) {
+      console.log(latitude);
+      console.log(longitude);
+      setSamePlace("Yes");
+    } else {
+      setSamePlace("No");
+    }
+  }, [
+    attendanceDatas?.latitude,
+    attendanceDatas?.longitude,
+    latitude,
+    longitude,
+  ]);
 
   const listName = data.map((d) => {
     return (
@@ -202,7 +212,7 @@ const Attendance = () => {
     );
   });
 
-  const listAttendance = attendanceDatas.map((data) => {
+  const listAttendance = attendanceDatas?.attendance?.map((data) => {
     return (
       <AttendanceContainer
         datas={data.attendance}
@@ -218,29 +228,35 @@ const Attendance = () => {
         Attendance
       </div>
 
-      {/* {samePlace && ( */}
-      <form
-        className="w-10/12 h-auto md:w-6/12 mr-auto ml-auto mt-4"
-        onSubmit={formSubmitHandler}
-      >
-        <h1 className="text-center text-blue-800">{status ? status : ""}</h1>
-
-        {listName}
-
-        <button
-          type="submit"
-          className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+      {samePlace === "Yes" && (
+        <form
+          className="w-10/12 h-auto md:w-6/12 mr-auto ml-auto mt-4"
+          onSubmit={formSubmitHandler}
         >
-          {isLoading ? "..." : "Submit"}
-        </button>
-      </form>
-      {/* )} */}
+          <h1 className="text-center text-blue-800">{status ? status : ""}</h1>
 
-      {/* {!samePlace && (
-      <p className="text-center text-red-600 mb-8">
-        You are not in nearby AWC area.
-      </p> */}
-      {/* )} */}
+          {listName}
+
+          <button
+            type="submit"
+            className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
+          >
+            {isLoading ? "..." : "Submit"}
+          </button>
+        </form>
+      )}
+
+      {samePlace === "Loading" && (
+        <p className="text-center text-red-600 mb-8">
+          Loading... Just Wait a minute.
+        </p>
+      )}
+
+      {samePlace === "No" && (
+        <p className="text-center text-red-600 mb-8">
+          You are not in nearby AWC area.
+        </p>
+      )}
 
       <DropDownAttendance selected={selectedDays} />
 
