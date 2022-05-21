@@ -18,7 +18,7 @@ const Attendance = () => {
 
       console.log(response);
 
-      setAttendanceDatas(response.data);
+      setAttendanceDatas(response.data.attendance);
     } catch (err) {
       console.log(err);
     }
