@@ -1,11 +1,13 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
 import encrypt from "../../lib/Crypto";
+import styled from "styled-components";
 
 const Announcement = (props) => {
   // const body = useRef();
 
   const [body, setBody] = useState("");
+  const [sendTo, setSendTo] = useState("PLadies");
 
   const [isLoading, setIsLoading] = useState(false);
   const [status, setStatus] = useState("");
@@ -14,6 +16,11 @@ const Announcement = (props) => {
 
   const bodyChangeHandler = (e) => {
     setBody(e.target.value);
+  };
+
+  const dropDownHandler = (e) => {
+    console.log(e.target.value);
+    setSendTo(e.target.value);
   };
 
   const formSubmitHandler = async (e) => {
@@ -27,6 +34,7 @@ const Announcement = (props) => {
         {
           centerCode: localStorage.getItem("code"),
           body: encryptedBody,
+          sendTo: sendTo,
         }
       );
 
@@ -61,6 +69,15 @@ const Announcement = (props) => {
             onChange={bodyChangeHandler}
           />
 
+          <SelectDiv className="w-full h-8">
+            {/* <Label htmlFor="category">Category</Label> */}
+            <Select name="To" id="To" onChange={dropDownHandler}>
+              <Option value="PLadies">To</Option>
+              <Option value="PLadies">Pregnant Ladies</Option>
+              <Option value="Children">Children</Option>
+            </Select>
+          </SelectDiv>
+
           <button
             type="submit"
             className="w-full h-10 border rounded-sm bg-red-500 m-2 text-white block mr-auto ml-auto hover:bg-green-500"
@@ -72,5 +89,33 @@ const Announcement = (props) => {
     </>
   );
 };
+
+const SelectDiv = styled.div`
+  // width: 90%;
+  // height: 40px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 20px;
+`;
+
+const Select = styled.select`
+  width: 100%;
+  height: 100%;
+  // font-size: 18px;
+  border: 2px solid #143365;
+  border-radius: 5px;
+
+  @media (max-width: 799px) {
+    border: 1px solid #143365;
+  }
+`;
+
+const Option = styled.option`
+  width: 80%;
+  height: 40px;
+  text-align: center;
+  font-size: 16px;
+`;
 
 export default Announcement;
